@@ -1,0 +1,46 @@
+.{
+  font-family: sans-serif;
+}
+
+h1{
+  text-align:center;
+}
+body{
+  background-color: white;
+}
+
+#button-group {
+  justify-content: center;
+  display:flex;
+}
+#container {
+  display: block;
+  margin-top: 10px;
+}
+
+#contact {
+  margin-top: 20px;
+  justify-content: center;
+  display:flex;
+}
+
+.row{
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  justify-content:center;
+}
+
+.column {
+  background-color: #666;
+  display: inline-block;
+  border: 1px solid white;
+  box-sizing: border-box;
+  opacity: 0.1;
+  border-radius: 1px;
+}
+
+.colored {
+  background-color: rgb(25,25,25);
+}
+
