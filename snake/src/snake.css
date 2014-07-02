@@ -1,0 +1,24 @@
+#board {
+  width:480px;
+  height:480px;
+}
+
+.row {
+  display: flex;
+}
+.grid {
+  width: 10px;
+  height: 10px;
+  border: 1px solid white;
+  background-color: grey;
+}
+
+
+.snake {
+  background-color: green;
+}
+
+
+.fruit {
+  background-color: red;
+}
