@@ -1,4 +1,13 @@
+*{
+  font-family: Arial;
+}
+#controller {
+  margin: 0 auto;
+  text-align: center;
+}
+
 #board {
+  margin: 0 auto;
   width:480px;
   height:480px;
 }
