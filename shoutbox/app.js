@@ -15,6 +15,7 @@ var login = require('./routes/login');
 var entries = require('./routes/entries');
 var messages = require('./lib/messages');
 var user = require('./lib/middleware/user');
+var validate = require('./lib/middleware/validate');
 
 var app = express();
 
@@ -41,7 +42,9 @@ app.get('/login', login.form);
 app.post('/login', login.submit);
 app.get('/logout', login.logout);
 app.get('/post', entries.form);
-app.post('/post', entries.submit);
+app.post('/post', validate.required('entry[title]'),
+         validate.lengthAbove('entry[title]', 4),
+         entries.submit);
 
 /// catch 404 and forward to error handler
 app.use(function(req, res, next) {
