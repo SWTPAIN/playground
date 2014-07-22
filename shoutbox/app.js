@@ -11,8 +11,9 @@ var methodOverride = require('method-override');
 var routes = require('./routes/index');
 // var users = require('./routes/users');
 var register = require('./routes/register');
-var messages = require('./lib/messages');
 var login = require('./routes/login');
+var entries = require('./routes/entries');
+var messages = require('./lib/messages');
 var user = require('./lib/middleware/user');
 
 var app = express();
@@ -28,17 +29,19 @@ app.use(bodyParser.urlencoded());
 app.use(methodOverride());
 app.use(cookieParser());
 app.use(session({secret: 'vegan'}));
-app.use(express.static(path.join(__dirname, 'public')));
 app.use(user);
 app.use(messages);
+app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', routes);
+app.get('/', entries.list);
 // app.use('/users', users);
 app.get('/register', register.form);
 app.post('/register', register.submit);
 app.get('/login', login.form);
 app.post('/login', login.submit);
 app.get('/logout', login.logout);
+app.get('/post', entries.form);
+app.post('/post', entries.submit);
 
 /// catch 404 and forward to error handler
 app.use(function(req, res, next) {
