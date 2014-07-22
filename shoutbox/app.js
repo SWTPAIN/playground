@@ -16,6 +16,9 @@ var entries = require('./routes/entries');
 var messages = require('./lib/messages');
 var user = require('./lib/middleware/user');
 var validate = require('./lib/middleware/validate');
+var page = require('./lib/middleware/page');
+var Entry = require('./lib/entry');
+
 
 var app = express();
 
@@ -34,7 +37,7 @@ app.use(user);
 app.use(messages);
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.get('/', entries.list);
+app.get('/', page(Entry.count, 5), entries.list);
 // app.use('/users', users);
 app.get('/register', register.form);
 app.post('/register', register.submit);
